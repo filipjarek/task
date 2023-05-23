@@ -18,7 +18,7 @@
 
                     <div class="mb-6">
                         {{ form_label(form.loanAmount, 'Loan Amount (PLN):', {'label_attr': {'class': 'block text-gray-800 text-xl mb-2'}}) }}
-                        {{ form_widget(form.loanAmount, {'attr': {'class': ' range-slider accent-gray-700', 'type': 'range', 'min': '1000', 'max': '20000', 'step': '50'}}) }}
+                        {{ form_widget(form.loanAmount, {'attr': {'class': ' range-slider accent-gray-700', 'type': 'range', 'min': '1000', 'max': '20000', 'step': '1'}}) }}
                             <span id="loan-amount-value" class="ml-2 font-medium text-lg text-gray-600">
                                 {{ form.loanAmount.vars.value|number_format(2) }} PLN
                             </span>

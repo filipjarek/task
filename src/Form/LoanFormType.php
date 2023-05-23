@@ -19,7 +19,7 @@ class LoanFormType extends AbstractType
                 'attr' => [
                     'min' => 1000,
                     'max' => 20000,
-                    'step' => 25,
+                    'step' => 1,
                     'class' => 'block w-full',
                 ],
             ])
