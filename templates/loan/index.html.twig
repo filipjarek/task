@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Loan Fee Calculation
+{% endblock %}
+
+{% block body %}
+
+    <div class="flex justify-center items-center h-screen">
+        <div class="w-3/4 bg-neutral-100 shadow-lg p-9 flex">
+            <div class="w-1/2">
+                <h1 class="text-xl font-medium text-center mb-8 text-gray-800 underline">
+                    Loan Calculator
+                </h1>
+                <div class="grid grid-cols-1 gap-4 items-center justify-center text-center">
+                
+                {{ form_start(form) }}
+
+                    <div class="mb-6">
+                        {{ form_label(form.loanAmount, 'Loan Amount (PLN):', {'label_attr': {'class': 'block text-gray-800 text-xl mb-2'}}) }}
+                        {{ form_widget(form.loanAmount, {'attr': {'class': ' range-slider accent-gray-700', 'type': 'range', 'min': '1000', 'max': '20000', 'step': '50'}}) }}
+                            <span id="loan-amount-value" class="ml-2 font-medium text-lg text-gray-600">
+                                {{ form.loanAmount.vars.value|number_format(2) }} PLN
+                            </span>
+                            <p class="font-small text-xs text-gray-600">
+                                Loan amount should be between 1,000 and 20,000 PLN
+                            </p>
+                   
+                    </div>
+
+                    <div class="mb-6">
+                        {{ form_label(form.loanTerm, 'Loan Term (Months):', {'label_attr': {'class': 'block text-gray-800 text-xl mb-2'}}) }}
+                        {{ form_widget(form.loanTerm, {'attr': {'class': 'flex flex-cols-1 gap-4 items-center justify-center text-center accent-gray-700  px-4 py-2  gap-4 text-xl focus:outline-none focus:ring-2 focus:ring-blue-500'}}) }}
+                            <p class="font-small text-xs text-gray-600">
+                                Desired loan term in months
+                            </p>
+                        {{ form_errors(form.loanTerm, {'attr': {'class': 'text-red-500 mt-2'}}) }}
+                    </div>
+
+                    <div class="mx-auto w-4/5"> 
+                        <div class="bg-gray-50 hover:bg-black py-2 px-4 border border-2 border-black text-black hover:text-white pt-2 pb-2 pl-6 pr-6 text-center font-medium text-lg">
+                        {{ form_row(form.submit) }}
+                        </div>
+                    </div>
+                
+                {{ form_end(form) }}
+
+                </div>
+            </div>
+
+            <div class="inline-block w-0.5 self-stretch bg-gray-400 opacity-20"></div>
+
+            <div class="w-1/2 ml-8">
+
+            {% if fee is not null %}
+
+                <h1 class="text-xl font-medium text-center mb-8 text-gray-800 underline">
+                    Loan Details
+                </h1>
+      
+                <div class="grid grid-cols-1 gap-2 items-center justify-center text-center">
+                    <div>
+                        <p class="text-xl">
+                            Loan Amount
+                        </p>
+                        <p class="loanAmount text-2xl text-green-600 font-medium">
+                            {{ form.loanAmount.vars.value|number_format(2) }} PLN
+                        </p>
+                    </div>
+                
+                    <div>
+                        <p class="text-xl">
+                            Fee
+                        </p>
+                        <p class="fee text-2xl text-green-600 font-medium">
+                            {{ fee }} PLN
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="text-xl">
+                            Total Payment
+                        </p>
+                        <p class="totalPayment text-2xl text-green-600 font-medium">
+                            {{ totalPayment|number_format(2) }} PLN
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="text-xl">
+                            Number of payments
+                        </p>
+                        <p class="loanTerm text-2xl text-green-600 font-medium">
+                            {{ loanTerm }}
+                        </p>
+                    </div>
+                
+                    <div>
+                        <p class="text-xl">
+                            Monthly Installment
+                        </p>
+                        <p class="monthlyInstallment text-2xl text-green-600 font-medium">
+                            {{ monthlyInstallment|number_format(2) }} PLN
+                        </p>
+                    </div>
+                </div>
+      
+            {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="relative px-4 py-4 flex items-center text-gray-400">
+	    <div class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+		    <div class="flex justify-center items-center lg:justify-between">
+			    <span>© 2023 Design by - Filip Jarek</span>
+		    </div>
+	    </div>
+    </footer>
+
+    <script>
+        const loanAmountInput = document.getElementById('loan_form_loanAmount');
+        const loanAmountValue = document.getElementById('loan-amount-value');
+
+        loanAmountInput.addEventListener('input', function () {
+            loanAmountValue.textContent = this.value;
+        });
+    </script>
+
+{% endblock %}
+
