@@ -39,6 +39,10 @@ The fee structure doesn't follow particular algorithm and it is possible that sa
 20000 PLN: 400 PLN
 ```
 ## Screenshots
+![Test1](./Screenshots/Screenshot_1.png)
+![Test2](./Screenshots/Screenshot_2.png)
+![Test3](./Screenshots/Screenshot_3.png)
+![Test4](./Screenshots/Screenshot_4.png)
 
 ## Setup
 #### Step 1 : Clone the project
