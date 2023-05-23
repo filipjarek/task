@@ -66,5 +66,6 @@ Open link in your browser: http://localhost:8000:
 ## Testing
 ```
 $ ./vendor/phpunit/phpunit/phpunit
+$ php bin/phpunit
 ```
 Run the tests using PHPUnit package
