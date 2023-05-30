@@ -1,4 +1,4 @@
-# Interview Test - Fee Calculation
+# Loan Fee Calculator 
 
 ## Table of Contents
 * [Technologies Used](#technologies-used)
